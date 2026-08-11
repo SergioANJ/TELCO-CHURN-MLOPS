@@ -1,0 +1,30 @@
+# Entorno virtual
+venv/
+env/
+
+# MLflow
+mlflow.db
+mlruns/
+
+# Datos (pesados, no deben ir a GitHub)
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+
+# Modelos entrenados (pesados)
+models/*.pkl
+!models/.gitkeep
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Python
+__pycache__/
+*.pyc
+
+# Variables de entorno / secretos
+.env
+
+# VS Code
+.vscode/

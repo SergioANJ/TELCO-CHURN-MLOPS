@@ -1,0 +1,32 @@
+# config.yaml
+# Configuración centralizada del proyecto Telco Churn
+
+paths:
+  raw_data: "data/raw/WA_Fn-UseC_-Telco-Customer-Churn.csv"
+  processed_data: "data/processed/telco_churn_clean.csv"
+  features_data: "data/processed/telco_churn_features.csv"
+  model_output: "models/modelo_campeon.pkl"
+
+random_state: 42
+
+train_test_split:
+  test_size: 0.2
+  stratify: true
+
+target_column: "Churn"
+
+grid_search:
+  scoring: "recall"
+  cv: 5
+  param_grid:
+    max_depth: [3, 5, 7, 10, 15]
+    min_samples_split: [10, 20, 50]
+    min_samples_leaf: [5, 10, 20]
+
+model:
+  class_weight: "balanced"
+
+mlflow:
+  tracking_uri: "sqlite:///mlflow.db"
+  experiment_name: "telco_churn_decision_tree"
+  
