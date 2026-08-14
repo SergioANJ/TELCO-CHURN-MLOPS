@@ -12,6 +12,12 @@ data/processed/*
 !data/raw/.gitkeep
 !data/processed/.gitkeep
 
+# EXCEPCIÓN: Permitir que Git SÍ rastree los archivos .dvc
+!*.dvc
+
+# Credenciales locales de DVC (nunca se versionan)
+.dvc/config.local
+
 # Modelos entrenados (pesados)
 models/*.pkl
 !models/.gitkeep
