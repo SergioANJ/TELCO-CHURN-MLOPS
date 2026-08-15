@@ -41,6 +41,9 @@ def codificar_binarias(df: pd.DataFrame) -> pd.DataFrame:
     """Aplica mapeo manual 0/1 a las variables binarias definidas en MAPEOS_BINARIOS."""
     df = df.copy()
     for col, mapeo in MAPEOS_BINARIOS.items():
+        if col not in df.columns:
+             continue  # normal en inferencia: Churn no existe todavía
+        
         valores_esperados = set(mapeo.keys())
         valores_reales = set(df[col].unique())
         assert valores_reales.issubset(valores_esperados), (

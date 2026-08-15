@@ -84,3 +84,16 @@ def test_construir_features_pipeline_completo_es_numerico():
     columnas_texto = df_features.select_dtypes(include=["object", "string"]).columns
     assert len(columnas_texto) == 0
     assert df_features.shape[0] == 2  # no se debieron perder filas
+
+def test_codificar_binarias_tolera_ausencia_de_churn():
+    """
+    En inferencia, el DataFrame no trae la columna Churn (es lo que se
+    va a predecir). codificar_binarias no debe fallar por su ausencia.
+    """
+    df = crear_dataframe_limpio_de_prueba()
+    df_sin_churn = df.drop(columns=["Churn"])
+
+    df_cod = codificar_binarias(df_sin_churn)
+
+    assert "Churn" not in df_cod.columns
+    assert df_cod["gender"].tolist() == [0, 1]
