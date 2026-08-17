@@ -13,8 +13,8 @@ WORKDIR /app
 # Esto es una técnica de optimización: Docker cachea cada paso (layer).
 # Si el código cambia pero requirements.txt no, Docker reutiliza la capa
 # ya instalada en vez de reinstalar todo de cero cada vez.
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+COPY requirements-api.txt .
+RUN pip install --no-cache-dir -r requirements-api.txt
 
 # ---- Copiamos el código y artefactos necesarios ----
 COPY app/ ./app/
