@@ -1,0 +1,41 @@
+# Entorno virtual (Docker construye el suyo propio)
+venv/
+env/
+
+# Datos (no los necesita la API en producción)
+data/
+
+# Notebooks y exploración
+notebooks/
+*.ipynb
+.ipynb_checkpoints/
+
+# Tests (se corren antes de construir la imagen, no dentro)
+tests/
+
+# Control de versiones
+.git/
+.gitignore
+.dvc/
+.dvcignore
+*.dvc
+
+# MLflow (tracking de experimentos, no es parte de producción)
+mlflow.db
+mlruns/
+
+
+# Reports
+reports/
+
+# Python
+__pycache__/
+*.pyc
+
+# Configuración local / secretos
+.env
+.vscode/
+
+
+# Documentación (opcional, no la necesita la API)
+README.md

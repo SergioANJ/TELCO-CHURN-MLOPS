@@ -34,3 +34,6 @@ __pycache__/
 
 # VS Code
 .vscode/
+
+# Docker (si en el futuro generas archivos de build cache visibles)
+.docker/
