@@ -44,7 +44,7 @@ jobs:
       - name: Instalar DVC
         run: |
           pip install "pyopenssl<24.3.0" dvc dvc-gdrive
-          pip show pyopenss
+          pip show pyopenssl
 
       - name: Configurar credenciales de DVC
         run: |
