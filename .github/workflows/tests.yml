@@ -28,8 +28,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements-api.txt
-          pip install pytest pandas scikit-learn scipy imbalanced-learn pyyaml joblib
-
+          pip install pytest  imbalanced-learn
       # Paso 4: corre los tests
       - name: Ejecutar tests
         run: pytest tests/ -v
