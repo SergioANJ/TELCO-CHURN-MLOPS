@@ -36,6 +36,23 @@ jobs:
       - name: Clonar el repositorio
         uses: actions/checkout@v4
 
+      - name: Configurar Python (necesario para DVC)
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Instalar DVC
+        run: pip install dvc dvc-gdrive
+
+      - name: Configurar credenciales de DVC
+        run: |
+          echo '${{ secrets.GDRIVE_CREDENTIALS_DATA }}' > gdrive-credentials.json
+          dvc remote modify --local gdrive_storage gdrive_use_service_account true
+          dvc remote modify --local gdrive_storage gdrive_service_account_json_file_path gdrive-credentials.json
+
+      - name: Descargar modelo con DVC
+        run: dvc pull models/modelo_campeon.pkl.dvc
+
       - name: Construir imagen Docker
         run: docker build -t telco-churn-api .
 
