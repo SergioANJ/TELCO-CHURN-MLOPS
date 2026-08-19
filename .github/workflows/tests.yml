@@ -42,7 +42,9 @@ jobs:
           python-version: "3.11"
 
       - name: Instalar DVC
-        run: pip install dvc dvc-gdrive
+        run: |
+          pip install --upgrade pyopenssl cryptography
+          pip install dvc dvc-gdrive
 
       - name: Configurar credenciales de DVC
         run: |
